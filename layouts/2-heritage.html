@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пышкинские традиции — Макет 2 «Heritage»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5eee2; --paper2:#ece2d0; --ink:#1f2a22; --green:#1f3d2f; --terra:#c4532d; --terra2:#e07a4f; --muted:#6d6558; --line:#d8ccb6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+  html,body{overflow-x:clip}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+  .serif{font-family:"Playfair Display",Georgia,serif}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:700;line-height:1.02;letter-spacing:-.01em}
+  .ornament{height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22' viewBox='0 0 44 22'%3E%3Cpath d='M0 11 L11 0 L22 11 L11 22Z M22 11 L33 0 L44 11 L33 22Z' fill='none' stroke='%23c4532d' stroke-width='1.5'/%3E%3Ccircle cx='22' cy='11' r='2.5' fill='%23c4532d'/%3E%3C/svg%3E") repeat-x center}
+
+  /* top bar */
+  .topbar{background:var(--green);color:#e9dfcc;font-size:13px}
+  .topbar .wrap{display:flex;justify-content:space-between;padding-top:10px;padding-bottom:10px;gap:16px;flex-wrap:wrap}
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(245,238,226,.92);backdrop-filter:blur(10px);z-index:40}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:86px}
+  .nav nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+  .nav nav a:hover{color:var(--terra)}
+  .logo{text-align:center;line-height:1}
+  .logo b{font-family:"Playfair Display";font-size:30px;font-weight:900;display:block;letter-spacing:-.02em}
+  .logo span{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--terra)}
+  .nav-r{display:flex;justify-content:flex-end;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:2px;font-weight:600;font-size:14px;letter-spacing:.04em;transition:.25s;border:1.5px solid var(--ink)}
+  .btn-dark{background:var(--ink);color:var(--paper)}
+  .btn-dark:hover{background:var(--terra);border-color:var(--terra)}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+
+  /* hero */
+  .hero{padding:64px 0 96px}
+  .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:center}
+  .kicker{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);font-weight:600;display:flex;align-items:center;gap:14px}
+  .kicker::after{content:"";flex:0 0 60px;height:1px;background:var(--terra)}
+  .hero h1{font-size:clamp(52px,7.6vw,124px);margin:24px 0 32px;font-weight:900}
+  .hero h1 i{font-weight:500;color:var(--terra)}
+  .hero p.lead{font-size:20px;max-width:540px;color:var(--muted)}
+  .hero-cta{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+  .arch{aspect-ratio:4/5;border-radius:999px 999px 0 0;background:var(--terra);position:relative;overflow:hidden;box-shadow:inset 0 0 0 14px var(--paper),inset 0 0 0 16px var(--terra)}
+  .arch svg{position:absolute;inset:auto 0 0;width:100%}
+  .seal{position:absolute;left:-40px;bottom:60px;width:150px;height:150px;border-radius:50%;background:var(--green);color:var(--paper);display:grid;place-items:center;text-align:center;font-family:"Playfair Display";font-style:italic;font-size:18px;line-height:1.1;transform:rotate(-12deg);box-shadow:0 20px 40px rgba(0,0,0,.18)}
+  .seal b{display:block;font-size:40px;font-style:normal}
+  .hero-art{position:relative}
+
+  /* numbers */
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+  .nums div{padding:36px 28px;border-right:1px solid var(--line)}
+  .nums div:last-child{border:0}
+  .nums b{font-family:"Playfair Display";font-size:48px;display:block;line-height:1;color:var(--green)}
+  .nums span{font-size:14px;color:var(--muted)}
+
+  section{padding:120px 0}
+  .sec-h{text-align:center;max-width:760px;margin:0 auto 64px}
+  .sec-h h2{font-size:clamp(40px,5.4vw,80px);margin:18px 0}
+  .sec-h h2 i{color:var(--terra);font-weight:500}
+  .sec-h p{color:var(--muted);font-size:18px}
+  .sec-h .kicker{justify-content:center}
+  .sec-h .kicker::before{content:"";flex:0 0 60px;height:1px;background:var(--terra)}
+
+  /* catalogue — editorial list */
+  .cat{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px}
+  .card .img{aspect-ratio:4/5;background:var(--paper2);position:relative;overflow:hidden;display:grid;place-items:center}
+  .card .img svg{width:70%;transition:.6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .img svg{transform:scale(1.1)}
+  .card .num{position:absolute;top:18px;left:20px;font-family:"Playfair Display";font-style:italic;font-size:20px;color:var(--terra)}
+  .card h3{font-size:34px;margin:22px 0 8px}
+  .card p{color:var(--muted);font-size:15px}
+  .card .more{display:inline-block;margin-top:14px;font-weight:600;font-size:14px;border-bottom:1.5px solid var(--terra);padding-bottom:2px}
+  .card:nth-child(2){margin-top:80px}
+  .card:nth-child(5){margin-top:80px}
+
+  /* quote band */
+  .band{background:var(--green);color:var(--paper);padding:120px 0;position:relative}
+  .band .ornament{position:absolute;left:0;right:0;filter:brightness(1.6)}
+  .band .ornament:first-child{top:24px}.band .ornament:last-child{bottom:24px}
+  .band blockquote{font-family:"Playfair Display";font-size:clamp(30px,4vw,58px);line-height:1.15;text-align:center;max-width:1040px;margin:0 auto;font-style:italic}
+  .band blockquote b{font-style:normal;color:var(--terra2)}
+  .band cite{display:block;text-align:center;margin-top:32px;font-style:normal;letter-spacing:.3em;text-transform:uppercase;font-size:12px;opacity:.7}
+
+  /* menu table */
+  .menu-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 80px}
+  .tabs{display:flex;gap:10px;justify-content:center;margin-bottom:56px;flex-wrap:wrap}
+  .tabs button{background:none;border:1.5px solid var(--line);padding:10px 22px;border-radius:100px;font:500 14px Inter;cursor:pointer;color:var(--ink)}
+  .tabs button.on{background:var(--terra);border-color:var(--terra);color:#fff}
+  .row{display:flex;align-items:baseline;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .row h4{font-family:"Playfair Display";font-size:24px;font-weight:700}
+  .row small{display:block;color:var(--muted);font-size:14px;font-family:Inter}
+  .row .dots{flex:1;border-bottom:1.5px dotted #b9a98d;transform:translateY(-6px)}
+  .row .p{font-family:"Playfair Display";font-size:24px;color:var(--terra);font-weight:700;white-space:nowrap}
+
+  /* events */
+  .events{display:grid;grid-template-columns:1fr 1fr;background:var(--paper2)}
+  .events .l{padding:96px 72px}
+  .events h2{font-size:clamp(40px,4.8vw,72px);margin:20px 0}
+  .events ul{list-style:none;margin:32px 0 40px;columns:2;gap:32px}
+  .events li{padding:10px 0;border-bottom:1px solid var(--line);font-weight:500}
+  .events li::before{content:"◆ ";color:var(--terra);font-size:10px;vertical-align:middle}
+  .events .r{background:var(--terra);display:grid;place-items:center;position:relative;overflow:hidden;min-height:420px}
+  .events .r svg{width:80%}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+  .step{border-top:2px solid var(--ink);padding-top:28px}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:"Playfair Display";font-style:italic;font-size:64px;color:var(--terra);line-height:1;display:block;margin-bottom:12px}
+  .step h3{font-size:28px;margin-bottom:8px}
+  .step p{color:var(--muted)}
+
+  footer{background:var(--ink);color:#d9cfbd;padding:96px 0 32px}
+  .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px}
+  footer h3{font-size:44px;color:var(--paper);margin-bottom:24px}
+  footer h5{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra2);margin-bottom:18px}
+  footer a{display:block;margin-bottom:8px}
+  footer a:hover{color:#fff}
+  .sub{display:flex;border-bottom:1.5px solid #52604f;margin-top:10px;max-width:420px}
+  .sub input{flex:1;background:none;border:0;color:#fff;padding:14px 0;font:15px Inter;outline:none}
+  .sub button{background:none;border:0;color:var(--terra2);font:600 14px Inter;cursor:pointer}
+  .f-b{display:flex;justify-content:space-between;margin-top:72px;padding-top:24px;border-top:1px solid #33402f;font-size:13px;opacity:.7;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:1000px){
+    .nav{grid-template-columns:auto 1fr;height:72px}
+    .nav nav{display:none}
+    .logo{text-align:left}
+    .hero-grid,.events,.menu-wrap{grid-template-columns:1fr}
+    .hero-art{max-width:420px;margin:0 auto;width:100%}
+    .nums{grid-template-columns:1fr 1fr}
+    .nums div:nth-child(2){border-right:0}
+    .nums div{border-bottom:1px solid var(--line)}
+    .cat{grid-template-columns:1fr 1fr}
+    .card:nth-child(n){margin-top:0}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .events .l{padding:64px 32px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .nav-r .btn-line{display:none}
+    .cat{grid-template-columns:1fr}
+    .events ul{columns:1}
+    .seal{left:0;width:120px;height:120px;font-size:15px}.seal b{font-size:30px}
+    section{padding:80px 0}
+    .logo b{font-size:22px}
+    .nav-r .btn{padding:11px 16px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="pie" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="94" fill="#b9652e"/>
+      <circle cx="100" cy="100" r="82" fill="#e2a45a"/>
+      <circle cx="100" cy="100" r="70" fill="#8a2e22"/>
+      <g stroke="#f4cf8b" stroke-width="9" stroke-linecap="round"><path d="M42 72h116M34 100h132M42 128h116M72 34v132M100 30v140M128 34v132"/></g>
+    </symbol>
+    <symbol id="dome" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="152" rx="90" ry="24" fill="#9c4f22"/>
+      <path d="M12 152 Q18 44 100 38 Q182 44 188 152 Z" fill="#e2a45a"/>
+      <path d="M36 124 Q100 64 164 124" stroke="#f7d9a0" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="100" cy="42" r="13" fill="#b9652e"/>
+    </symbol>
+    <symbol id="tri" viewBox="0 0 200 200">
+      <path d="M100 18 L186 170 Q100 190 14 170 Z" fill="#d98b45" stroke="#9c4f22" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M100 30 V150 M100 150 L40 165 M100 150 L160 165" stroke="#f7d9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
+    </symbol>
+    <symbol id="chak" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="150" rx="88" ry="26" fill="#1f3d2f"/>
+      <g fill="#e8a94c" stroke="#b9652e" stroke-width="2">
+        <circle cx="60" cy="130" r="14"/><circle cx="90" cy="134" r="14"/><circle cx="120" cy="132" r="14"/><circle cx="148" cy="128" r="14"/>
+        <circle cx="74" cy="108" r="14"/><circle cx="104" cy="110" r="14"/><circle cx="132" cy="106" r="14"/>
+        <circle cx="88" cy="86" r="14"/><circle cx="118" cy="86" r="14"/><circle cx="102" cy="64" r="14"/>
+      </g>
+    </symbol>
+    <symbol id="tulip" viewBox="0 0 400 300">
+      <g fill="none" stroke="#f5eee2" stroke-width="3" opacity=".9">
+        <path d="M200 300 V140"/>
+        <path d="M200 140 C170 110 170 70 200 40 C230 70 230 110 200 140Z"/>
+        <path d="M200 140 C150 140 130 100 140 70 C170 80 190 110 200 140"/>
+        <path d="M200 140 C250 140 270 100 260 70 C230 80 210 110 200 140"/>
+        <path d="M200 230 C150 230 110 200 100 160 C150 160 185 190 200 230"/>
+        <path d="M200 230 C250 230 290 200 300 160 C250 160 215 190 200 230"/>
+        <path d="M200 280 C140 280 80 260 50 220 M200 280 C260 280 320 260 350 220"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="topbar"><div class="wrap"><span>Доставка по Уфе за 3 часа · ежедневно 9:00–20:30</span><span>ул. Кирова, 34 · <a href="tel:+73472161615">+7 (347) 216-16-15</a></span></div></div>
+
+<header>
+  <div class="wrap nav">
+    <nav><a href="#catalog">Каталог</a><a href="#menu">Меню</a><a href="#events">Фуршеты</a><a href="#how">Доставка</a></nav>
+    <a href="#" class="logo"><b>Пышкинские</b><span>традиции · с 2009</span></a>
+    <div class="nav-r"><a class="btn btn-line" href="tel:+73472161615">Позвонить</a><a class="btn btn-dark" href="#menu">Заказать</a></div>
+  </div>
+</header>
+
+<section class="hero" style="padding-top:64px">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Кулинария · Уфа</span>
+      <h1>Вкус,<br>который <i>передают</i><br>по наследству</h1>
+      <p class="lead">Пироги, зур-бэлиш, губадия и домашняя выпечка по семейным рецептам русской, татарской и башкирской кухни. Печём каждое утро — привозим к вашему столу.</p>
+      <div class="hero-cta"><a class="btn btn-dark" href="#catalog">Выбрать пирог →</a><a class="btn btn-line" href="#events">Заказать фуршет</a></div>
+    </div>
+    <div class="hero-art">
+      <div class="arch"><svg viewBox="0 0 400 300"><use href="#tulip"/></svg>
+        <svg viewBox="0 0 200 200" style="position:absolute;inset:18% 12% auto;width:76%"><use href="#pie"/></svg>
+      </div>
+      <div class="seal"><div><b>3 ч</b>доставка<br>горячим</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="nums">
+  <div><b>200+</b><span>блюд в меню</span></div>
+  <div><b>3</b><span>национальные кухни</span></div>
+  <div><b>600+</b><span>отзывов гостей</span></div>
+  <div><b>2</b><span>кулинарии в Уфе</span></div>
+</div></div>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="sec-h"><span class="kicker">Каталог</span><h2>Всё, что мы <i>печём</i></h2><p>Каждая категория — десятки рецептов. Выберите повод, а мы подскажем, что подойдёт.</p></div>
+    <div class="cat">
+      <a class="card" href="#"><div class="img"><span class="num">i.</span><svg viewBox="0 0 200 200"><use href="#pie"/></svg></div><h3>Пироги</h3><p>Осетинские, открытые, курники, с ягодами — от 1 кг.</p><span class="more">Смотреть 40 видов</span></a>
+      <a class="card" href="#"><div class="img"><span class="num">ii.</span><svg viewBox="0 0 200 200"><use href="#dome"/></svg></div><h3>Зур-бэлиш</h3><p>Большой татарский пирог с мясом и картофелем.</p><span class="more">Заказать</span></a>
+      <a class="card" href="#"><div class="img"><span class="num">iii.</span><svg viewBox="0 0 200 200"><use href="#tri"/></svg></div><h3>Выпечка</h3><p>Эчпочмаки, беляши, сдобные пирожки к чаю.</p><span class="more">Смотреть</span></a>
+      <a class="card" href="#"><div class="img"><span class="num">iv.</span><svg viewBox="0 0 200 200"><use href="#chak"/></svg></div><h3>Сладкое</h3><p>Чак-чак, губадия, пирожные, домашнее печенье.</p><span class="more">Смотреть</span></a>
+      <a class="card" href="#"><div class="img" style="background:#1f3d2f"><span class="num">v.</span><svg viewBox="0 0 400 300"><use href="#tulip"/></svg></div><h3>Праздничные сеты</h3><p>Готовые наборы для стола на 5–50 персон.</p><span class="more">Собрать сет</span></a>
+      <a class="card" href="#"><div class="img"><span class="num">vi.</span><svg viewBox="0 0 200 200"><use href="#pie"/></svg></div><h3>Полуфабрикаты</h3><p>Голубцы, фаршированные перцы, тефтели, рыба.</p><span class="more">Смотреть</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="ornament"></div>
+  <div class="wrap"><blockquote>«Хороший пирог не торопится. Тесто должно <b>отдохнуть</b>, начинка — <b>настояться</b>, а гость — <b>дождаться</b>».</blockquote><cite>— Правило нашей кулинарии</cite></div>
+  <div class="ornament"></div>
+</div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-h"><span class="kicker">Меню</span><h2>Популярное <i>сегодня</i></h2></div>
+    <div class="tabs"><button class="on">Пироги</button><button>Выпечка</button><button>Сладкое</button><button>Сеты</button></div>
+    <div class="menu-wrap">
+      <div>
+        <div class="row"><div><h4>Зур-бэлиш с говядиной</h4><small>за 1 кг · картофель, лук</small></div><span class="dots"></span><span class="p">1 290 ₽</span></div>
+        <div class="row"><div><h4>Губадия</h4><small>за 1 кг · рис, корт, изюм</small></div><span class="dots"></span><span class="p">1 150 ₽</span></div>
+        <div class="row"><div><h4>Курник</h4><small>за 1 кг · курица, грибы, блины</small></div><span class="dots"></span><span class="p">1 190 ₽</span></div>
+      </div>
+      <div>
+        <div class="row"><div><h4>Осетинский с сыром</h4><small>900 г · сулугуни, зелень</small></div><span class="dots"></span><span class="p">890 ₽</span></div>
+        <div class="row"><div><h4>Пирог с вишней</h4><small>за 1 кг · песочное тесто</small></div><span class="dots"></span><span class="p">990 ₽</span></div>
+        <div class="row"><div><h4>Бэлиш с уткой</h4><small>за 1 кг · утка, картофель</small></div><span class="dots"></span><span class="p">1 390 ₽</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px"><a class="btn btn-dark" href="#">Полное меню →</a></div>
+  </div>
+</section>
+
+<div class="events" id="events">
+  <div class="l">
+    <span class="kicker">Фуршет и банкет</span>
+    <h2>Накроем стол<br>на любое событие</h2>
+    <p style="color:var(--muted);font-size:18px">Канапе, мини-пироги, закуски и горячее. Составим меню, привезём и красиво подадим.</p>
+    <ul><li>Корпоративы</li><li>Свадьбы</li><li>Выпускные</li><li>Юбилеи</li><li>Кофе-брейки</li><li>Поминальные обеды</li></ul>
+    <a class="btn btn-dark" href="#">Получить расчёт</a>
+  </div>
+  <div class="r"><svg viewBox="0 0 400 300"><use href="#tulip"/></svg></div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-h"><span class="kicker">Как заказать</span><h2>Три шага <i>до пирога</i></h2></div>
+    <div class="steps">
+      <div class="step"><h3>Выберите</h3><p>Соберите заказ на сайте или позвоните нам — поможем с выбором и весом.</p></div>
+      <div class="step"><h3>Мы испечём</h3><p>Готовим под ваш заказ из свежих продуктов. Цена за кг фиксируется после выпекания.</p></div>
+      <div class="step"><h3>Привезём</h3><p>Доставка по Уфе за 3 часа или самовывоз с ул. Кирова, 34.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><h3>Пышкинские традиции</h3><p>Подпишитесь — пришлём новинки и сезонные скидки.</p><form class="sub" onsubmit="return false"><input placeholder="Ваш e-mail"><button>Подписаться →</button></form></div>
+      <div><h5>Каталог</h5><a href="#">Пироги</a><a href="#">Зур-бэлиш</a><a href="#">Выпечка</a><a href="#">Сладкое</a><a href="#">Сеты</a></div>
+      <div><h5>Контакты</h5><a href="tel:+73472161615">+7 (347) 216-16-15</a><a href="#">Уфа, ул. Кирова, 34</a><a href="#">Ежедневно 9:00–20:30</a><a href="#">Telegram · ВКонтакте</a></div>
+    </div>
+    <div class="f-b"><span>© 2026 Пышкинские традиции</span><span>Политика конфиденциальности · Оферта</span></div>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+</script>
+</body>
+</html>

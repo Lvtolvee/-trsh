@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пышкинские традиции — Макет 1 «Noir»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0c0a; --bg2:#171411; --card:#1d1915; --line:#2e2822;
+    --text:#f4ede3; --muted:#a39888; --gold:#f2b544; --gold2:#e0892b; --cream:#f4ede3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;font-size:16px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:Unbounded,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02}
+
+  /* header */
+  header{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);background:rgba(14,12,10,.72);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:32px;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:Unbounded;font-weight:800;font-size:15px;line-height:1;text-transform:uppercase}
+  .logo i{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--bg) 0 22%,var(--gold) 23% 100%);display:block;flex:none}
+  .logo small{display:block;font-family:Manrope;font-weight:500;font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:4px}
+  .menu{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+  .menu a:hover{color:var(--text)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:20px}
+  .phone{font-weight:700;font-size:15px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-weight:700;font-size:15px;transition:.25s;cursor:pointer;border:0}
+  .btn-gold{background:var(--gold);color:#1a1206}
+  .btn-gold:hover{background:#ffc75e;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* hero */
+  .hero{min-height:100vh;padding-top:120px;position:relative;display:flex;flex-direction:column;justify-content:center}
+  .hero::before{content:"";position:absolute;right:-15vw;top:5vh;width:75vw;height:75vw;max-width:1100px;max-height:1100px;background:radial-gradient(circle,rgba(242,181,68,.22),transparent 60%);pointer-events:none}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .tag::before{content:"";width:28px;height:1px;background:var(--gold)}
+  .hero h1{font-size:clamp(48px,9.2vw,148px);margin:28px 0 36px;position:relative;z-index:2}
+  .hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--gold)}
+  .hero-row{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
+  .hero p{max-width:520px;color:var(--muted);font-size:19px}
+  .hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .stats{display:flex;gap:48px}
+  .stat b{font-family:Unbounded;font-size:44px;display:block;color:var(--gold);line-height:1}
+  .stat span{font-size:13px;color:var(--muted)}
+  .pie-hero{position:absolute;right:-6vw;top:110px;width:min(36vw,520px);aspect-ratio:1;animation:spin 60s linear infinite;opacity:.95}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* marquee */
+  .marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
+  .marquee div{display:flex;gap:48px;white-space:nowrap;animation:run 30s linear infinite;font-family:Unbounded;font-size:28px;font-weight:600;width:max-content}
+  .marquee span:nth-child(even){color:var(--gold)}
+  @keyframes run{to{transform:translateX(-50%)}}
+
+  section{padding:120px 0}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+  .head h2{font-size:clamp(36px,5vw,72px)}
+  .head p{max-width:420px;color:var(--muted)}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:16px}
+  .cell{position:relative;border-radius:28px;overflow:hidden;background:var(--card);padding:28px;display:flex;flex-direction:column;justify-content:flex-end;transition:.35s;border:1px solid var(--line)}
+  .cell:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .cell h3{font-size:24px;position:relative;z-index:2}
+  .cell p{color:var(--muted);font-size:14px;position:relative;z-index:2;margin-top:6px}
+  .cell .arr{position:absolute;top:24px;right:24px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;z-index:2;transition:.3s}
+  .cell:hover .arr{background:var(--gold);color:#000;transform:rotate(-45deg)}
+  .cell svg.art{position:absolute;right:-40px;top:-40px;width:260px;opacity:.9;transition:.5s}
+  .cell:hover svg.art{transform:rotate(25deg) scale(1.05)}
+  .c-big{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#2a1d0e,#150f09)}
+  .c-big h3{font-size:44px}
+  .c-big svg.art{width:440px;right:-80px;top:-80px}
+  .c-wide{grid-column:span 2}
+  .c-gold{background:var(--gold);color:#1a1206}
+  .c-gold p{color:#5a3f10}.c-gold .arr{border-color:#1a1206}
+
+  /* hits */
+  .hits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .hit{background:var(--bg2);border-radius:24px;padding:14px;border:1px solid var(--line)}
+  .hit .ph{aspect-ratio:1;border-radius:18px;background:radial-gradient(circle at 30% 20%,#3a2a17,#15100b);display:grid;place-items:center;overflow:hidden;position:relative}
+  .hit .ph svg{width:78%;transition:.5s}
+  .hit:hover .ph svg{transform:scale(1.08) rotate(-8deg)}
+  .badge{position:absolute;top:12px;left:12px;background:var(--gold);color:#000;font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em}
+  .hit-b{padding:18px 8px 6px}
+  .hit h4{font-size:17px;font-weight:700}
+  .hit small{color:var(--muted)}
+  .hit-f{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+  .price{font-family:Unbounded;font-size:20px;font-weight:600}
+  .add{width:44px;height:44px;border-radius:50%;background:var(--text);color:#000;font-size:24px;border:0;cursor:pointer;transition:.2s}
+  .add:hover{background:var(--gold)}
+
+  /* story */
+  .story{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+  .story-big{font-family:Unbounded;font-size:clamp(28px,3.4vw,50px);font-weight:600;line-height:1.15}
+  .story-big mark{background:none;color:var(--gold)}
+  .feats{display:grid;gap:0}
+  .feat{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--line)}
+  .feat:last-child{border-bottom:1px solid var(--line)}
+  .feat b{font-family:Unbounded;color:var(--gold);font-size:14px}
+  .feat h4{font-size:20px;margin-bottom:4px}
+  .feat p{color:var(--muted);font-size:15px}
+
+  /* catering */
+  .cater{border-radius:40px;background:linear-gradient(120deg,var(--gold) 0%,var(--gold2) 100%);color:#1a1206;padding:80px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;position:relative;overflow:hidden}
+  .cater h2{font-size:clamp(36px,4.6vw,64px)}
+  .cater p{font-size:18px;margin:20px 0 32px;max-width:480px}
+  .cater .btn{background:#1a1206;color:var(--gold)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;align-content:center}
+  .chips span{border:1.5px solid #1a1206;padding:12px 20px;border-radius:100px;font-weight:700}
+
+  /* delivery */
+  .deliv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .dv{background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:36px}
+  .dv b{font-family:Unbounded;font-size:56px;color:var(--gold);display:block;line-height:1;margin-bottom:16px}
+  .dv p{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:80px 0 40px}
+  .f-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+  .f-top h5{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:500}
+  .f-top a{display:block;margin-bottom:8px}
+  .f-top a:hover{color:var(--gold)}
+  .f-big{font-family:Unbounded;font-weight:800;font-size:clamp(40px,11vw,180px);line-height:.9;margin-top:80px;color:transparent;-webkit-text-stroke:1px #3a3129;text-align:center;letter-spacing:-.04em}
+  .f-bot{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:32px;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:1000px){
+    .menu,.phone{display:none}
+    .hero-row,.story,.cater{grid-template-columns:1fr}
+    .pie-hero{opacity:.25;width:70vw;right:-20vw}
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
+    .hits{grid-template-columns:1fr 1fr}
+    .deliv{grid-template-columns:1fr}
+    .f-top{grid-template-columns:1fr 1fr}
+    .cater{padding:48px 28px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .nav-right .btn{padding:10px 16px;font-size:13px}
+    .bento{grid-template-columns:1fr}
+    .c-big,.c-wide{grid-column:auto}
+    .c-big{grid-row:span 1}.c-big h3{font-size:30px}
+    .hits{grid-template-columns:1fr}
+    .stats{gap:24px}
+    section{padding:80px 0}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- пирог-плетёнка -->
+    <symbol id="pie" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="96" fill="#c9782c"/>
+      <circle cx="100" cy="100" r="84" fill="#e9a54a"/>
+      <circle cx="100" cy="100" r="74" fill="#7a2f1d"/>
+      <g stroke="#f2c071" stroke-width="10" stroke-linecap="round" opacity=".95">
+        <path d="M40 70h120M32 100h136M40 130h120"/>
+        <path d="M70 32v136M100 26v148M130 32v136"/>
+      </g>
+      <circle cx="100" cy="100" r="84" fill="none" stroke="#b86722" stroke-width="6" stroke-dasharray="4 10"/>
+    </symbol>
+    <!-- эчпочмак -->
+    <symbol id="tri" viewBox="0 0 200 200">
+      <path d="M100 18 L186 170 Q100 190 14 170 Z" fill="#d98b35" stroke="#a85c1c" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M100 30 L100 150 M100 150 L40 165 M100 150 L160 165" stroke="#f2c071" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <circle cx="100" cy="112" r="10" fill="#5a2a14"/>
+    </symbol>
+    <!-- зур-бэлиш -->
+    <symbol id="dome" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="150" rx="90" ry="26" fill="#a85c1c"/>
+      <path d="M14 150 Q20 40 100 36 Q180 40 186 150 Z" fill="#e3a049"/>
+      <path d="M40 120 Q100 60 160 120" stroke="#f6d08a" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="100" cy="40" r="14" fill="#c9782c"/>
+    </symbol>
+    <!-- кольцо-пышка -->
+    <symbol id="ring" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="90" fill="#d98b35"/>
+      <circle cx="100" cy="100" r="80" fill="#f4ede3"/>
+      <circle cx="100" cy="100" r="30" fill="#0e0c0a"/>
+      <g fill="#f2b544"><circle cx="60" cy="70" r="4"/><circle cx="140" cy="80" r="4"/><circle cx="130" cy="140" r="4"/><circle cx="70" cy="135" r="4"/><circle cx="100" cy="50" r="4"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><i></i><span>Пышкинские<br>традиции<small>кулинарня · Уфа</small></span></a>
+    <nav class="menu"><a href="#menu">Меню</a><a href="#hits">Хиты</a><a href="#story">О нас</a><a href="#cater">Фуршет</a><a href="#delivery">Доставка</a></nav>
+    <div class="nav-right">
+      <a class="phone" href="tel:+73472161615">+7 347 216-16-15</a>
+      <a class="btn btn-gold" href="#menu">Заказать</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="pie-hero" viewBox="0 0 200 200"><use href="#pie"/></svg>
+  <div class="wrap">
+    <span class="tag">Своё производство с душой</span>
+    <h1>Пироги,<br>как <em>дома</em>.<br>Только быстрее.</h1>
+    <div class="hero-row">
+      <div>
+        <p>Зур-бэлиш, губадия, эчпочмаки, осетинские пироги и сдоба — русская, татарская и башкирская кухня с доставкой по Уфе за 3 часа.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#menu">Смотреть меню →</a>
+          <a class="btn btn-ghost" href="#cater">Фуршетные сеты</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>3 ч</b><span>доставка по Уфе</span></div>
+        <div class="stat"><b>200+</b><span>позиций в меню</span></div>
+        <div class="stat"><b>4.8★</b><span>рейтинг гостей</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div>
+  <span>Зур-бэлиш</span><span>✦</span><span>Губадия</span><span>✦</span><span>Эчпочмак</span><span>✦</span><span>Курник</span><span>✦</span><span>Чак-чак</span><span>✦</span><span>Осетинские пироги</span><span>✦</span>
+  <span>Зур-бэлиш</span><span>✦</span><span>Губадия</span><span>✦</span><span>Эчпочмак</span><span>✦</span><span>Курник</span><span>✦</span><span>Чак-чак</span><span>✦</span><span>Осетинские пироги</span><span>✦</span>
+</div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="head">
+      <h2>Меню<br>на любой повод</h2>
+      <p>От утреннего пирожка к кофе до праздничного стола на 50 гостей. Всё печём сами, каждый день.</p>
+    </div>
+    <div class="bento">
+      <a class="cell c-big" href="#"><svg class="art" viewBox="0 0 200 200"><use href="#pie"/></svg><span class="arr">→</span><h3>Пироги</h3><p>Сладкие и мясные, от 1 кг · 40+ видов</p></a>
+      <a class="cell" href="#"><svg class="art" viewBox="0 0 200 200"><use href="#dome"/></svg><span class="arr">→</span><h3>Зур-бэлиш</h3><p>Главный татарский пирог</p></a>
+      <a class="cell" href="#"><svg class="art" viewBox="0 0 200 200"><use href="#tri"/></svg><span class="arr">→</span><h3>Выпечка</h3><p>Эчпочмаки, беляши, пирожки</p></a>
+      <a class="cell c-gold" href="#"><span class="arr">→</span><h3>Сеты</h3><p>Готовый праздничный стол</p></a>
+      <a class="cell" href="#"><svg class="art" viewBox="0 0 200 200"><use href="#ring"/></svg><span class="arr">→</span><h3>Десерты</h3><p>Пирожные, торты, чак-чак</p></a>
+      <a class="cell c-wide" href="#"><span class="arr">→</span><h3>Полуфабрикаты</h3><p>Голубцы, перцы, тефтели, пельмени — приготовить за 20 минут</p></a>
+      <a class="cell" href="#"><span class="arr">→</span><h3>Пицца</h3><p>Горячая, на тонком тесте</p></a>
+      <a class="cell" href="#"><span class="arr">→</span><h3>Заготовки</h3><p>Аджика, соленья, варенье</p></a>
+    </div>
+  </div>
+</section>
+
+<section id="hits" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head"><h2>Хиты недели</h2><a class="btn btn-ghost" href="#">Весь каталог →</a></div>
+    <div class="hits">
+      <div class="hit"><div class="ph"><span class="badge">Хит</span><svg viewBox="0 0 200 200"><use href="#dome"/></svg></div><div class="hit-b"><h4>Зур-бэлиш с говядиной</h4><small>1 кг · на 6 персон</small><div class="hit-f"><span class="price">1 290 ₽</span><button class="add">+</button></div></div></div>
+      <div class="hit"><div class="ph"><svg viewBox="0 0 200 200"><use href="#pie"/></svg></div><div class="hit-b"><h4>Губадия с кортом</h4><small>1 кг · сладкая</small><div class="hit-f"><span class="price">1 150 ₽</span><button class="add">+</button></div></div></div>
+      <div class="hit"><div class="ph"><span class="badge">Новинка</span><svg viewBox="0 0 200 200"><use href="#tri"/></svg></div><div class="hit-b"><h4>Эчпочмак</h4><small>150 г · баранина, картофель</small><div class="hit-f"><span class="price">120 ₽</span><button class="add">+</button></div></div></div>
+      <div class="hit"><div class="ph"><svg viewBox="0 0 200 200"><use href="#ring"/></svg></div><div class="hit-b"><h4>Чак-чак с мёдом</h4><small>500 г · башкирский мёд</small><div class="hit-f"><span class="price">590 ₽</span><button class="add">+</button></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story">
+    <p class="story-big">Мы готовим так, как готовили наши бабушки — <mark>из настоящих продуктов</mark>, по проверенным рецептам и без спешки. Только доставляем уже по-современному.</p>
+    <div class="feats">
+      <div class="feat"><b>01</b><div><h4>Своё производство</h4><p>Тесто замешиваем сами, начинки — из фермерского мяса и овощей.</p></div></div>
+      <div class="feat"><b>02</b><div><h4>Каждый день свежее</h4><p>Печём с утра — никаких вчерашних пирогов в заказе.</p></div></div>
+      <div class="feat"><b>03</b><div><h4>Три кухни</h4><p>Русская, татарская и башкирская традиции в одном меню.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cater" style="padding-top:0">
+  <div class="wrap">
+    <div class="cater">
+      <div>
+        <h2>Фуршет под ключ</h2>
+        <p>Канапе, мини-пироги, закуски и горячее для корпоратива, свадьбы, выпускного или дня рождения. Соберём меню под бюджет и количество гостей.</p>
+        <a class="btn" href="#">Рассчитать сет →</a>
+      </div>
+      <div class="chips"><span>Корпоратив</span><span>Свадьба</span><span>Выпускной</span><span>День рождения</span><span>Поминальный стол</span><span>Кофе-брейк</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="delivery" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>Доставка</h2><p>Работаем ежедневно с 9:00 до 20:30. Самовывоз — ул. Кирова, 34.</p></div>
+    <div class="deliv">
+      <div class="dv"><b>3 ч</b><h4>По всей Уфе</h4><p>Привезём горячим — в термосумках, к нужному времени.</p></div>
+      <div class="dv"><b>0 ₽</b><h4>Бесплатно от 3000 ₽</h4><p>Доставка в пригород рассчитывается отдельно.</p></div>
+      <div class="dv"><b>−10%</b><h4>На самовывоз</h4><p>Заберите заказ сами из нашей кулинарии.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div><a href="#" class="logo"><i></i><span>Пышкинские<br>традиции</span></a><p style="color:var(--muted);margin-top:20px;max-width:320px">Кулинария и доставка домашней еды в Уфе.</p></div>
+      <div><h5>Меню</h5><a href="#">Пироги</a><a href="#">Выпечка</a><a href="#">Сеты</a><a href="#">Десерты</a></div>
+      <div><h5>Клиентам</h5><a href="#">Доставка и оплата</a><a href="#">Фуршет</a><a href="#">Отзывы</a><a href="#">Контакты</a></div>
+      <div><h5>Связь</h5><a href="tel:+73472161615">+7 347 216-16-15</a><a href="#">ул. Кирова, 34</a><a href="#">Telegram</a><a href="#">ВКонтакте</a></div>
+    </div>
+    <div class="f-big">ПЫШКИНСКИЕ</div>
+    <div class="f-bot"><span>© 2026 Пышкинские традиции</span><span>Политика конфиденциальности</span></div>
+  </div>
+</footer>
+</body>
+</html>
