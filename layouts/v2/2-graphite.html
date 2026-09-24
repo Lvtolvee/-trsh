@@ -12,7 +12,7 @@
     --bg:#f4f1ec; --white:#fff; --ink:#1d1c1a; --ink2:#2b2926; --muted:#7a756d; --line:#e2ddd4;
     --wine:#7d2330; --wine2:#9b3140; --sand:#e9e3d8;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box;margin:0;padding:0;font-variant-numeric:lining-nums tabular-nums}
   html,body{overflow-x:clip}
   body{background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,sans-serif;min-width:320px}
   a{color:inherit;text-decoration:none}
@@ -46,8 +46,9 @@
   .hbtn .c{background:var(--wine);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px}
 
   /* раскладка */
-  .layout{display:grid;grid-template-columns:300px 1fr;gap:40px;padding-top:32px}
-  aside{position:sticky;top:128px;align-self:start}
+  .layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:40px;padding-top:32px}
+  .layout>main{min-width:0}
+  aside{align-self:start}
   .srch{display:flex;align-items:center;border:1px solid var(--line);background:var(--white);height:48px;padding:0 16px;gap:10px;margin-bottom:20px}
   .srch input{flex:1;outline:0;font-size:14px}
   .cats{background:var(--white);border:1px solid var(--line)}
@@ -62,7 +63,7 @@
   .side-card .row b{color:#fff;font-weight:600}
 
   /* hero */
-  .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;height:600px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;height:600px}
   .hero-main{position:relative;color:#fff}
   .hero-main .ph{position:absolute;inset:0}
   .hero-main::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.82) 0,rgba(20,18,16,.35) 55%,rgba(20,18,16,.05))}
@@ -88,14 +89,14 @@
   .promo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(20,18,16,.8))}
   .promo *{position:relative;z-index:2}
   .promo .ph{position:absolute;z-index:0}
-  .promo h3{font-size:28px;margin:6px 0 6px}
+  .promo h3{font-size:26px;margin:6px 0 6px}
   .promo span.over{color:#e5d2bd}
   .promo.wine{background:var(--wine)}
   .promo.wine::after{display:none}
   .promo .big{font:84px/1 Prata,serif}
 
   /* инфо-лента */
-  .info{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1px solid var(--line);margin-top:20px}
+  .info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--white);border:1px solid var(--line);margin-top:20px}
   .info div{padding:26px 28px;border-right:1px solid var(--line)}
   .info div:last-child{border:0}
   .info b{display:block;font:22px Prata,serif;margin-bottom:4px}
@@ -104,20 +105,20 @@
   section{padding-top:96px}
   .sh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:32px}
   .sh h2{font-size:52px;margin-top:10px}
-  .sh a{font-weight:600;font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:3px}
+  .sh a{white-space:nowrap;font-weight:600;font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:3px}
   .sh a:hover{color:var(--wine);border-color:var(--wine)}
 
   /* категории */
-  .cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
   .cg .ph{aspect-ratio:1/1.08}
   .cg:hover .ph img{transform:scale(1.05)}
-  .cg .cap{display:flex;justify-content:space-between;align-items:baseline;padding:16px 2px 0;border-bottom:1px solid var(--line);padding-bottom:14px}
+  .cg .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 2px 0;border-bottom:1px solid var(--line);padding-bottom:14px}
   .cg h4{font-size:21px}
-  .cg small{color:var(--muted);font-size:13px}
+  .cg small{color:var(--muted);font-size:13px;white-space:nowrap}
   .cg:hover h4{color:var(--wine)}
 
   /* товары */
-  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
   .pc{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s}
   .pc:hover{border-color:var(--ink)}
   .pc .ph{aspect-ratio:1/1}
@@ -255,7 +256,10 @@
       <div class="sh"><div><span class="over">Каталог</span><h2>Разделы меню</h2></div><a href="#">Все 17 разделов</a></div>
       <div class="cgrid" id="cgrid"></div>
     </section>
+  </main>
+</div>
 
+<div class="wrap full">
     <section>
       <div class="sh"><div><span class="over">Популярное на этой неделе</span><h2>Выбирают чаще всего</h2></div><a href="#">Перейти в каталог</a></div>
       <div class="pgrid" id="pgrid"></div>
@@ -301,7 +305,6 @@
         </div>
       </div>
     </section>
-  </main>
 </div>
 
 <footer>
@@ -326,7 +329,7 @@ const counts=[24,18,42,36,28,12,9,14,22,8,30,16,11,19,13,27,10];
 $('#catList').innerHTML=CATS.map((c,i)=>`<a href="#" class="${i===0?'on':''}">${c.n}<small>${counts[i]}</small></a>`).join('');
 $('#cgrid').innerHTML=CATS.slice(0,8).map((c,i)=>`<a class="cg" href="#">${ph(c.img)}<div class="cap"><h4>${c.n}</h4><small>${counts[i]} поз.</small></div></a>`).join('');
 const cart={n:0,s:0};
-$('#pgrid').innerHTML=PRODUCTS.slice(0,6).map((p,i)=>`<div class="pc"><div class="ph" data-ph>${p.tag?`<span class="tag">${p.tag}</span>`:''}<img src="${p.img}" alt="" loading="lazy"></div>
+$('#pgrid').innerHTML=PRODUCTS.map((p,i)=>`<div class="pc"><div class="ph" data-ph>${p.tag?`<span class="tag">${p.tag}</span>`:''}<img src="${p.img}" alt="" loading="lazy"></div>
   <div class="b"><span class="cat">${p.c}</span><h4>${p.n}</h4>
   <div class="spec">${p.fixed?`<div>Состав<b>${p.w}</b></div><div>Цена<b>за набор</b></div>`:`<div>Средний вес<b>≈ ${p.avg} г</b></div><div>За 100 г<b>${String(p.per100).replace('.',',')} ₽</b></div>`}</div>
   <div class="f"><span class="price">${p.fixed?'':'≈ '}${money(priceOf(p))}</span><button class="add" data-i="${i}">В корзину</button></div></div></div>`).join('');
