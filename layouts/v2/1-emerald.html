@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пышкинские традиции — «Изумруд»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --em:#0f2a1c; --em2:#173b28; --em3:#22523a; --gold:#b8955a; --gold2:#d4b47c;
+    --ivory:#f7f3ea; --paper:#fbf9f4; --ink:#191a16; --muted:#6f6a5e; --line:#e6dfcf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:clip}
+  body{background:var(--paper);color:var(--ink);font:15px/1.6 Manrope,system-ui,sans-serif;min-width:320px}
+  a{color:inherit;text-decoration:none}
+  button,input{font:inherit;color:inherit}
+  button{cursor:pointer;border:0;background:none}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 40px}
+  .serif{font-family:"Cormorant Garamond",Georgia,serif}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.02;letter-spacing:-.01em}
+  .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700}
+
+  /* фото-слоты */
+  .ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#e9e1cf,#d9ccb1)}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .ph.noimg::after{content:"П";position:absolute;inset:0;display:grid;place-items:center;font:600 72px "Cormorant Garamond",serif;color:rgba(15,42,28,.18)}
+
+  /* верхняя строка */
+  .topline{background:var(--em);color:#cfd8cf;font-size:13px}
+  .topline .wrap{display:flex;align-items:center;gap:32px;height:40px}
+  .topline .gold{color:var(--gold2)}
+  .topline .sp{margin-left:auto;display:flex;gap:28px}
+  .topline a:hover{color:#fff}
+
+  /* шапка */
+  header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+  .hdr{display:flex;align-items:center;gap:28px;height:92px}
+  .logo{display:flex;align-items:center;gap:14px;flex:none}
+  .logo-mark{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--em)}
+  .logo b{font:700 26px/1 "Cormorant Garamond",serif;color:var(--em);display:block;letter-spacing:.01em}
+  .logo span{font-size:10px;letter-spacing:.46em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .cat-btn{display:flex;align-items:center;gap:12px;background:var(--em);color:#fff;height:52px;padding:0 26px;border-radius:2px;font-weight:600;letter-spacing:.02em;transition:.2s}
+  .cat-btn:hover,.cat-btn.on{background:var(--em3)}
+  .burger{width:18px;height:12px;position:relative;border-block:1.5px solid currentColor}
+  .burger::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1.5px solid currentColor;transform:translateY(-50%)}
+  .search{flex:1;display:flex;align-items:center;height:52px;border:1px solid var(--line);background:#fff;border-radius:2px;padding:0 6px 0 20px}
+  .search input{flex:1;border:0;outline:0;background:none;font-size:15px}
+  .search button{height:40px;padding:0 20px;background:var(--ivory);color:var(--em);font-weight:600;border-radius:2px}
+  .hdr-phone{text-align:right;line-height:1.25}
+  .hdr-phone a{display:block;font-weight:700;font-size:17px}
+  .hdr-phone small{color:var(--muted);font-size:12px}
+  .icon-btn{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border:1px solid var(--line);border-radius:2px;font-weight:600;background:#fff}
+  .icon-btn:hover{border-color:var(--gold)}
+  .icon-btn .sum{color:var(--em)}
+  .icon-btn .badge{background:var(--gold);color:#fff;font-size:11px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px}
+  .nav2{display:flex;gap:36px;height:48px;align-items:center;font-size:14px;font-weight:600;color:var(--muted);border-top:1px solid var(--line)}
+  .nav2 a:hover{color:var(--em)}
+  .nav2 .r{margin-left:auto;color:var(--gold)}
+
+  /* мега-меню */
+  .mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 30px 60px rgba(15,42,28,.12);display:none}
+  .mega.open{display:block}
+  .mega .wrap{display:grid;grid-template-columns:1fr 1fr 1fr 380px;gap:8px 40px;padding-top:36px;padding-bottom:40px}
+  .mega a.m{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-weight:600;transition:.15s}
+  .mega a.m:hover{color:var(--em3);padding-left:6px}
+  .mega a.m span{color:var(--gold)}
+  .mega-pr{grid-row:1/span 6;grid-column:4;border-radius:2px;height:100%;min-height:320px}
+  .mega-pr .cap{position:absolute;left:0;right:0;bottom:0;padding:24px;color:#fff;background:linear-gradient(transparent,rgba(10,25,17,.85))}
+  .mega-pr h4{font:600 28px "Cormorant Garamond",serif}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:600px 1fr;min-height:640px;background:var(--em);color:#fff}
+  .hero-l{padding:80px 64px 56px max(40px,calc((100vw - 1400px)/2 + 40px));display:flex;flex-direction:column;justify-content:space-between;position:relative}
+  .hero h1{font-size:84px;margin:24px 0 28px;font-weight:600}
+  .hero h1 i{color:var(--gold2);font-weight:500}
+  .hero p{color:#c3cfc5;font-size:17px;max-width:440px}
+  .btns{display:flex;gap:12px;margin-top:40px}
+  .btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 32px;font-weight:700;letter-spacing:.03em;border-radius:2px;transition:.25s}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:#a5824a}
+  .btn-line{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .btn-line:hover{border-color:var(--gold2);color:var(--gold2)}
+  .btn-em{background:var(--em);color:#fff}
+  .btn-em:hover{background:var(--em3)}
+  .hero-stats{display:flex;gap:48px;border-top:1px solid rgba(255,255,255,.14);padding-top:28px;margin-top:56px}
+  .hero-stats b{font:600 44px/1 "Cormorant Garamond",serif;color:var(--gold2);display:block}
+  .hero-stats span{font-size:13px;color:#aebcb1}
+  .hero-r{position:relative}
+  .hero-r .ph{position:absolute;inset:0;background:var(--em2)}
+  .hero-r .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--em) 0,rgba(15,42,28,0) 30%);z-index:1}
+  .hero-card{position:absolute;right:40px;bottom:40px;z-index:2;background:rgba(251,249,244,.96);color:var(--ink);padding:24px 28px;width:340px;border-radius:2px;backdrop-filter:blur(8px)}
+  .hero-card .eyebrow{display:block;margin-bottom:8px}
+  .hero-card h4{font:600 26px/1.1 "Cormorant Garamond",serif;margin-bottom:6px}
+  .hero-card p{color:var(--muted);font-size:14px}
+  .slides{position:absolute;left:40px;bottom:40px;z-index:2;display:flex;gap:10px}
+  .slides i{width:36px;height:2px;background:rgba(255,255,255,.4)}
+  .slides i.on{background:var(--gold2)}
+
+  /* преимущества-лента */
+  .perks{border-bottom:1px solid var(--line);background:#fff}
+  .perks .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .perk{display:flex;gap:16px;align-items:center;padding:28px 24px;border-right:1px solid var(--line)}
+  .perk:first-child{padding-left:0}.perk:last-child{border:0}
+  .perk .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);flex:none}
+  .perk b{display:block;font-size:15px}
+  .perk span{font-size:13px;color:var(--muted)}
+
+  section{padding:112px 0}
+  .s-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:40px}
+  .s-head h2{font-size:64px;margin-top:14px}
+  .s-head h2 i{color:var(--gold);font-weight:500}
+  .s-head p{max-width:420px;color:var(--muted)}
+  .link{font-weight:700;color:var(--em);border-bottom:1px solid var(--gold);padding-bottom:3px;white-space:nowrap}
+
+  /* каталог-мозаика */
+  .mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:220px;gap:16px}
+  .tile{position:relative;border-radius:2px;overflow:hidden;color:#fff;grid-column:span 2}
+  .tile.big{grid-column:span 3;grid-row:span 2}
+  .tile .ph{position:absolute;inset:0}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,17,0) 35%,rgba(10,25,17,.82))}
+  .tile:hover .ph img{transform:scale(1.06)}
+  .tile .t{position:absolute;left:28px;right:28px;bottom:24px;z-index:2}
+  .tile h3{font-size:32px;font-weight:600}
+  .tile.big h3{font-size:46px}
+  .tile p{font-size:14px;color:#dfe5de;opacity:.9}
+  .tile .go{position:absolute;top:22px;right:22px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:.3s}
+  .tile:hover .go{background:var(--gold);border-color:var(--gold)}
+  .more-cats{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .more-cats a{border:1px solid var(--line);padding:12px 20px;border-radius:2px;font-weight:600;font-size:14px;background:#fff;transition:.2s}
+  .more-cats a:hover{border-color:var(--em);color:var(--em)}
+
+  /* товары */
+  .prod-sec{background:var(--ivory)}
+  .tabs{display:flex;gap:32px;border-bottom:1px solid var(--line);margin-bottom:40px}
+  .tabs button{padding:0 0 16px;font-weight:700;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs button.on{color:var(--em);border-color:var(--gold)}
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .pc{background:#fff;border-radius:2px;display:flex;flex-direction:column;transition:.3s;border:1px solid transparent}
+  .pc:hover{box-shadow:0 24px 50px rgba(15,42,28,.10);border-color:var(--line)}
+  .pc .ph{aspect-ratio:4/3.4}
+  .pc:hover .ph img{transform:scale(1.05)}
+  .pc .tag{position:absolute;top:14px;left:14px;background:var(--em);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;z-index:2}
+  .pc .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .pc .cat{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .pc h4{font:600 24px/1.1 "Cormorant Garamond",serif;margin:6px 0 10px}
+  .pc .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);padding:10px 0;border-block:1px dashed var(--line);margin-top:auto}
+  .pc .buy{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:12px;flex-wrap:wrap}
+  .pc .acts{display:flex;gap:8px;width:100%}
+  .pc .acts .add{flex:1}
+  .pc .price{font:700 28px/1 "Cormorant Garamond",serif;white-space:nowrap}
+  .pc .price small{display:block;font:500 12px Manrope;color:var(--muted);margin-bottom:4px}
+  .qty{display:flex;align-items:center;border:1px solid var(--line);height:44px}
+  .qty button{width:34px;height:100%;font-size:18px;color:var(--em)}
+  .qty span{min-width:22px;text-align:center;font-weight:700}
+  .add{height:44px;padding:0 18px;background:var(--em);color:#fff;font-weight:700;font-size:14px;transition:.2s}
+  .add:hover{background:var(--em3)}
+  .add.ok{background:var(--gold)}
+
+  /* бонусы */
+  .bonus{background:var(--em);color:#fff;overflow:clip;position:relative}
+  .bonus .wrap{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:center}
+  .bonus h2{font-size:72px;margin:18px 0 24px}
+  .bonus h2 i{color:var(--gold2)}
+  .bonus p{color:#c3cfc5;font-size:17px;max-width:520px}
+  .b-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border-top:1px solid rgba(255,255,255,.14)}
+  .b-steps div{padding:24px 24px 0 0}
+  .b-steps b{font:600 36px "Cormorant Garamond",serif;color:var(--gold2);display:block}
+  .b-steps span{font-size:14px;color:#c3cfc5}
+  .bonus .wrap>div:last-child{overflow:visible}
+  .card3d{aspect-ratio:1.586;border-radius:18px;background:linear-gradient(135deg,#d7b983,#a8844b 55%,#8a6a36);position:relative;padding:34px;color:#1c1409;box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5);transform:rotate(-6deg)}
+  .card3d::before{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(115deg,rgba(255,255,255,.06) 0 2px,transparent 2px 9px)}
+  .card3d .lg{font:700 30px "Cormorant Garamond",serif}
+  .card3d .lg small{display:block;font:700 10px Manrope;letter-spacing:.46em;text-transform:uppercase;opacity:.7}
+  .card3d .chip{width:52px;height:40px;border-radius:7px;background:linear-gradient(135deg,#f3e2b7,#c9a86a);margin:34px 0 26px;border:1px solid rgba(0,0,0,.15)}
+  .card3d .num{font:600 22px Manrope;letter-spacing:.18em}
+  .card3d .bal{position:absolute;right:34px;bottom:30px;text-align:right;font-size:12px;font-weight:600}
+  .card3d .bal b{display:block;font:700 34px "Cormorant Garamond",serif}
+  .card-back{position:absolute;right:-40px;top:-30px;width:100%;aspect-ratio:1.586;border-radius:18px;background:var(--em3);transform:rotate(6deg);opacity:.6}
+
+  /* фуршет */
+  .cater{display:grid;grid-template-columns:1.1fr 1fr;gap:0;background:#fff;border:1px solid var(--line)}
+  .cater .ph{min-height:600px}
+  .cater-f{padding:72px}
+  .cater-f h2{font-size:60px;margin:14px 0 18px}
+  .cater-f p{color:var(--muted)}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 28px}
+  .opts button{border:1px solid var(--line);padding:11px 18px;font-weight:600;font-size:14px}
+  .opts button.on{background:var(--em);border-color:var(--em);color:#fff}
+  .fld{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .fld input{height:54px;border:1px solid var(--line);padding:0 18px;outline:0;background:var(--paper)}
+  .fld input:focus{border-color:var(--gold)}
+  .range{margin:22px 0 30px}
+  .range label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:10px}
+  .range b{color:var(--em)}
+  input[type=range]{width:100%;accent-color:var(--em)}
+  .cater-sum{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--line)}
+  .cater-sum b{font:700 42px "Cormorant Garamond",serif;color:var(--em)}
+  .cater-sum small{display:block;color:var(--muted)}
+
+  /* о нас */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+  .about-img{position:relative;height:620px}
+  .about-img .ph{position:absolute;border-radius:2px}
+  .about-img .a1{inset:0 120px 90px 0}
+  .about-img .a2{right:0;bottom:0;width:300px;height:360px;border:10px solid var(--paper)}
+  .about h2{font-size:64px;margin:14px 0 24px}
+  .about p{color:var(--muted);font-size:17px;margin-bottom:16px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:40px;border-top:1px solid var(--line)}
+  .facts div{padding:24px 0;border-bottom:1px solid var(--line)}
+  .facts div:nth-child(odd){border-right:1px solid var(--line);padding-right:24px}
+  .facts div:nth-child(even){padding-left:24px}
+  .facts b{font:600 44px/1 "Cormorant Garamond",serif;color:var(--em);display:block}
+  .facts span{color:var(--muted);font-size:14px}
+
+  /* контакты */
+  .contact{display:grid;grid-template-columns:480px 1fr;border:1px solid var(--line);background:#fff}
+  .contact-l{padding:56px}
+  .contact-l h2{font-size:52px;margin:14px 0 32px}
+  .c-row{padding:18px 0;border-top:1px solid var(--line)}
+  .c-row small{display:block;color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .c-row b{font-size:18px}
+  .map{position:relative;background:#e9e4d6;min-height:460px;overflow:hidden}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .pin{position:absolute;left:52%;top:46%;transform:translate(-50%,-100%);background:var(--em);color:#fff;padding:12px 18px;font-weight:700;font-size:14px;white-space:nowrap}
+  .pin::after{content:"";position:absolute;left:50%;top:100%;border:8px solid transparent;border-top-color:var(--em);transform:translateX(-50%)}
+
+  footer{background:var(--em);color:#b9c6bc;padding:88px 0 32px;margin-top:112px}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:48px}
+  footer .logo b{color:#fff}
+  footer h5{color:var(--gold2);font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
+  footer a{display:block;margin-bottom:10px;font-size:14px}
+  footer a:hover{color:#fff}
+  .f-phone{font:600 28px "Cormorant Garamond",serif;color:#fff}
+  .f-b{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.12);margin-top:64px;padding-top:28px;font-size:13px}
+
+  @media (max-width:1180px){
+    .wrap{padding:0 24px}
+    .hdr-phone,.nav2 .r{display:none}
+    .hero{grid-template-columns:1fr}.hero-r{min-height:420px}.hero-l{padding:64px 24px}
+    .hero h1{font-size:60px}
+    .mosaic{grid-template-columns:repeat(2,1fr)}.tile,.tile.big{grid-column:span 1;grid-row:span 1}
+    .prods{grid-template-columns:repeat(2,1fr)}
+    .bonus .wrap,.cater,.about,.contact{grid-template-columns:1fr}
+    .perks .wrap{grid-template-columns:1fr 1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .mega .wrap{grid-template-columns:1fr 1fr}.mega-pr{display:none}
+    .s-head{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="topline"><div class="wrap">
+  <span>📍 <a href="#contacts">Уфа, ул. Кирова, 34</a></span>
+  <span>Принимаем заказы: <span class="gold">Пн–Сб 9:00–20:00 · Вс 9:00–19:00</span></span>
+  <div class="sp"><a href="#bonus" class="gold">Бонусная программа</a><a href="#">Доставка и оплата</a><a href="#">Акции</a><a href="#">Личный кабинет</a></div>
+</div></div>
+
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="#"><span class="logo-mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c-5-3-8-7-8-11 3 0 6 2 8 5 2-3 5-5 8-5 0 4-3 8-8 11Z"/><path d="M12 15V5M12 5c-1.5 1-2.5 2.5-2.5 4M12 5c1.5 1 2.5 2.5 2.5 4"/></svg></span><div><b>Пышкинские</b><span>традиции</span></div></a>
+    <button class="cat-btn" id="catBtn"><i class="burger"></i>Каталог</button>
+    <form class="search" onsubmit="return false"><input placeholder="Пирог с вишней, фуршетный набор, торт…"><button>Найти</button></form>
+    <div class="hdr-phone"><a href="tel:+73472263699">+7 (347) 226-36-99</a><small>Telegram · +7 (917) 383-62-85</small></div>
+    <a class="icon-btn" href="#"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><span class="sum" id="cartSum">0 ₽</span><span class="badge" id="cartCnt">0</span></a>
+  </div>
+  <div class="wrap nav2"><a href="#catalog">Фуршетные наборы</a><a href="#catalog">Пироги</a><a href="#catalog">Кондитерская</a><a href="#catalog">Бизнес-ланчи</a><a href="#catalog">Роллы</a><a href="#catalog">Подарки в коробке</a><a class="r" href="#cater">Рассчитать фуршет →</a></div>
+  <div class="mega" id="mega"><div class="wrap" id="megaList"></div></div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-l">
+    <div>
+      <span class="eyebrow">Кулинария собственного производства · с 2010 года</span>
+      <h1>Домашняя кухня <i>высокого</i> уровня</h1>
+      <p>Пироги, фуршетные наборы, торты и готовые обеды. Готовим каждый день из отборных продуктов и привозим по Уфе к назначенному времени.</p>
+      <div class="btns"><a class="btn btn-gold" href="#catalog">Перейти в каталог</a><a class="btn btn-line" href="#cater">Заказать фуршет</a></div>
+    </div>
+    <div class="hero-stats">
+      <div><b>95%</b><span>меню — своё<br>производство</span></div>
+      <div><b>17</b><span>разделов<br>каталога</span></div>
+      <div><b>15+</b><span>лет готовим<br>для Уфы</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="ph" data-ph><img id="heroImg" alt=""></div>
+    <div class="slides"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="hero-card"><span class="eyebrow">Бонусы за покупки</span><h4>Оплачивайте бонусами до 30% заказа</h4><p>Бонусы работают в магазине, на сайте и при доставке.</p></div>
+  </div>
+</section>
+
+<div class="perks"><div class="wrap">
+  <div class="perk"><span class="ic">✦</span><div><b>Собственное производство</b><span>Готовим сами, каждый день</span></div></div>
+  <div class="perk"><span class="ic">◷</span><div><b>Доставка ко времени</b><span>К завтраку, обеду, торжеству</span></div></div>
+  <div class="perk"><span class="ic">⚖</span><div><b>Честный вес</b><span>Цена по фактическому весу</span></div></div>
+  <div class="perk"><span class="ic">₽</span><div><b>Удобная оплата</b><span>Наличными, картой, онлайн</span></div></div>
+</div></div>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="eyebrow">Каталог</span><h2>Всё к вашему <i>столу</i></h2></div>
+      <p>От утреннего завтрака до праздничного банкета: 17 разделов, сотни блюд собственного приготовления.</p>
+    </div>
+    <div class="mosaic" id="mosaic"></div>
+    <div class="more-cats" id="moreCats"></div>
+  </div>
+</section>
+
+<section class="prod-sec">
+  <div class="wrap">
+    <div class="s-head">
+      <div><span class="eyebrow">Сегодня в витрине</span><h2>Выбор <i>шеф-повара</i></h2></div>
+      <a class="link" href="#">Весь каталог →</a>
+    </div>
+    <div class="tabs"><button class="on">Популярное</button><button>Новинки</button><button>Выпечка</button><button>Для праздника</button><button>Акции</button></div>
+    <div class="prods" id="prods"></div>
+  </div>
+</section>
+
+<section class="bonus" id="bonus">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Программа лояльности</span>
+      <h2>Получайте бонусы <i>за каждую покупку</i></h2>
+      <p>Копите баллы и оплачивайте ими следующие заказы. Одна карта для магазина на Кирова, сайта и доставки.</p>
+      <div class="b-steps">
+        <div><b>5%</b><span>возвращаем бонусами с каждого заказа</span></div>
+        <div><b>30%</b><span>заказа можно оплатить бонусами</span></div>
+        <div><b>500</b><span>приветственных бонусов при регистрации</span></div>
+      </div>
+      <div class="btns"><a class="btn btn-gold" href="#">Получить карту</a><a class="btn btn-line" href="#">Условия программы</a></div>
+    </div>
+    <div style="position:relative;padding:40px">
+      <div class="card-back"></div>
+      <div class="card3d"><div class="lg">Пышкинские<small>традиции</small></div><div class="chip"></div><div class="num">2210 •••• •••• 0347</div><div class="bal">Баланс<b>2 212</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cater">
+  <div class="wrap">
+    <div class="cater">
+      <div class="ph" data-ph><img alt="" id="caterImg"></div>
+      <div class="cater-f">
+        <span class="eyebrow">Фуршет и банкет</span>
+        <h2>Накроем стол на любое событие</h2>
+        <p>Канапе, тарталетки, пироги и горячее. Соберём меню под формат и бюджет, привезём и красиво сервируем.</p>
+        <div class="opts" id="opts"><button class="on" data-r="950">Корпоратив</button><button data-r="1400">Свадьба</button><button data-r="1100">Юбилей</button><button data-r="900">Выпускной</button><button data-r="650">Кофе-брейк</button></div>
+        <div class="range"><label>Количество гостей <b id="gN">30</b></label><input type="range" min="10" max="150" value="30" id="guests"></div>
+        <div class="fld"><input placeholder="Ваше имя"><input placeholder="Телефон"></div>
+        <div class="cater-sum"><div><small>Ориентировочно</small><b id="gSum">28 500 ₽</b></div><button class="btn btn-em">Получить меню и расчёт</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap about">
+    <div class="about-img"><div class="ph a1" data-ph><img alt="" id="ab1"></div><div class="ph a2" data-ph><img alt="" id="ab2"></div></div>
+    <div>
+      <span class="eyebrow">О кулинарии</span>
+      <h2>Традиции, которым доверяют</h2>
+      <p>«Пышкинские традиции» — кулинария КулинарМаркет Эксклюзив в центре Уфы. Мы начинали с пышной выпечки и пирогов, а сегодня готовим всё: от бизнес-ланчей до банкетных сетов.</p>
+      <p>95% меню — собственное производство. Отборное фермерское сырьё, проверенные рецепты и повара, которые работают с нами годами.</p>
+      <div class="facts">
+        <div><b>2010</b><span>год основания</span></div>
+        <div><b>300+</b><span>блюд в ассортименте</span></div>
+        <div><b>7 дней</b><span>в неделю без выходных</span></div>
+        <div><b>1 000+</b><span>фуршетов в год</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding-top:0">
+  <div class="wrap contact">
+    <div class="contact-l">
+      <span class="eyebrow">Контакты</span>
+      <h2>Ждём в гости</h2>
+      <div class="c-row"><small>Адрес</small><b>г. Уфа, ул. Кирова, 34</b><br><span style="color:var(--muted);font-size:14px">пересечение ул. Крупской и ул. Кирова</span></div>
+      <div class="c-row"><small>Телефоны</small><b><a href="tel:+73472263699">+7 (347) 226-36-99</a></b><br><b><a href="tel:+79173836285">+7 (917) 383-62-85</a></b> <span style="color:var(--muted);font-size:14px">Telegram / WhatsApp</span></div>
+      <div class="c-row"><small>Принимаем заказы</small><b>Пн–Сб 9:00–20:00 · Вс 9:00–19:00</b></div>
+    </div>
+    <div class="map">
+      <svg viewBox="0 0 800 460" preserveAspectRatio="xMidYMid slice"><g stroke="#fff" stroke-width="14" fill="none"><path d="M-20 120 L820 180"/><path d="M-20 320 L820 290"/><path d="M180 -20 L240 480"/><path d="M430 -20 L400 480"/><path d="M640 -20 L700 480"/></g><g stroke="#f7f3ea" stroke-width="6" fill="none"><path d="M-20 220 L820 240"/><path d="M300 -20 L330 480"/><path d="M540 -20 L560 480"/></g><rect x="460" y="330" width="140" height="100" fill="#d7dfcc"/><rect x="40" y="10" width="120" height="90" fill="#d7dfcc"/></svg>
+      <div class="pin">Пышкинские традиции · Кирова, 34</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><a class="logo" href="#"><span class="logo-mark" style="color:var(--gold2)">✦</span><div><b>Пышкинские</b><span>традиции</span></div></a><p style="margin-top:24px;font-size:14px;max-width:280px">Кулинария собственного производства и доставка готовой еды по Уфе.</p></div>
+      <div><h5>Каталог</h5><a href="#">Фуршетные наборы</a><a href="#">Пироги</a><a href="#">Кондитерская</a><a href="#">Пышная выпечка</a><a href="#">Роллы</a></div>
+      <div><h5>Меню дня</h5><a href="#">Вкусные завтраки</a><a href="#">Бизнес-ланчи</a><a href="#">Супы и второе</a><a href="#">Салаты</a><a href="#">Меню для детей</a></div>
+      <div><h5>Покупателям</h5><a href="#">Доставка и оплата</a><a href="#">Бонусная программа</a><a href="#">Акции</a><a href="#">Контакты</a></div>
+      <div><h5>Заказ по телефону</h5><a class="f-phone" href="tel:+73472263699">+7 (347) 226-36-99</a><a href="tel:+79173836285">+7 (917) 383-62-85 · Telegram</a><a>Пн–Сб 9–20 · Вс 9–19</a></div>
+    </div>
+    <div class="f-b"><span>© 2010–2026 Пышкинские традиции · КулинарМаркет Эксклюзив</span><span>Политика конфиденциальности · Публичная оферта</span></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const ph=src=>`<div class="ph" data-ph><img src="${src}" alt="" loading="lazy"></div>`;
+$('#heroImg').src=HERO.main; $('#caterImg').src=IMG('1528736235302-52922df5c122'); $('#ab1').src=HERO.kitchen; $('#ab2').src=HERO.pastry;
+
+/* мега-меню */
+$('#megaList').innerHTML=CATS.map((c,i)=>`<a class="m" href="#catalog">${c.n}<span>→</span></a>`).join('')+
+  `<a class="ph mega-pr" data-ph href="#cater"><img src="${HERO.main}" alt=""><div class="cap"><span class="eyebrow">Предложение</span><h4>Фуршет на 10 персон от 4 900 ₽</h4></div></a>`;
+$('#catBtn').onclick=()=>{$('#mega').classList.toggle('open');$('#catBtn').classList.toggle('on')};
+
+/* мозаика: 6 главных разделов + остальные чипсами */
+const main=['furshet','pies','cake','bake','lunch','rolls','break','grill'];
+const layout={furshet:'big',pies:'big'};
+$('#mosaic').innerHTML=main.map(id=>{const c=CATS.find(x=>x.id===id);return `<a class="tile ${layout[id]||''}" href="#">${ph(c.img)}<span class="go">→</span><div class="t"><h3>${c.n}</h3><p>${c.d}</p></div></a>`}).join('');
+$('#moreCats').innerHTML=CATS.filter(c=>!main.includes(c.id)).map(c=>`<a href="#">${c.n}</a>`).join('');
+
+/* товары */
+const cart={n:0,s:0};
+$('#prods').innerHTML=PRODUCTS.map((p,i)=>`
+  <div class="pc">
+    <div class="ph" data-ph>${p.tag?`<span class="tag">${p.tag}</span>`:''}<img src="${p.img}" alt="" loading="lazy"></div>
+    <div class="body"><span class="cat">${p.c}</span><h4>${p.n}</h4>
+      <div class="meta">${p.fixed?`<span>Вес / состав: ${p.w}</span><span>за набор</span>`:`<span>Средний вес ≈ ${p.avg} г</span><span>${String(p.per100).replace('.',',')} ₽ / 100 г</span>`}</div>
+      <div class="buy"><div class="price"><small>${p.fixed?'Цена':'Ориентировочно'}</small>${money(priceOf(p))}</div>
+        </div><div class="acts"><div class="qty"><button data-d="-1">−</button><span>1</span><button data-d="1">+</button></div><button class="add" data-i="${i}">В корзину</button></div>
+    </div></div>`).join('');
+$('#prods').onclick=e=>{
+  const d=e.target.dataset.d; if(d){const s=e.target.parentNode.querySelector('span');s.textContent=Math.max(1,+s.textContent+ +d);return}
+  const b=e.target.closest('.add'); if(!b)return;
+  const q=+b.previousElementSibling.querySelector('span').textContent;
+  cart.n+=q; cart.s+=priceOf(PRODUCTS[b.dataset.i])*q;
+  $('#cartCnt').textContent=cart.n; $('#cartSum').textContent=money(cart.s);
+  b.textContent='Добавлено ✓';b.classList.add('ok');setTimeout(()=>{b.textContent='В корзину';b.classList.remove('ok')},1200);
+};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+
+/* калькулятор фуршета */
+let rate=950;const g=$('#guests');
+const calc=()=>{$('#gN').textContent=g.value;$('#gSum').textContent=money(g.value*rate)};
+g.oninput=calc;
+$('#opts').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#opts button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rate=+b.dataset.r;calc()};
+calc();
+</script>
+</body>
+</html>
